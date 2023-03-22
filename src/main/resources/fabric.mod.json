@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "id": "minegpt",
+  "version": "${version}",
+
+  "name": "MineGPT",
+  "description": "Communicate with the OpenAI GPT3 API through minecraft.",
+  "authors": [
+    "m_hgn"
+  ],
+  "contact": {
+    "homepage": "https://fabricmc.net/",
+    "sources": "https://github.com/m-hgn/minegpt"
+  },
+
+  "license": "GPL 3 License",
+  "icon": "assets/minegpt/icon.png",
+
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+    ],
+    "client": [
+      "net.m_hgn.minegpt.MineGptClient"
+    ]
+  },
+  "mixins": [
+  ],
+
+  "depends": {
+    "fabricloader": ">=0.14.17",
+    "fabric": "*",
+    "minecraft": "~1.19.4",
+    "java": ">=17"
+  },
+  "suggests": {
+    "another-mod": "*"
+  }
+}
