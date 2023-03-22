@@ -1,4 +1,4 @@
-# MineGPT 1.19.4
+# MineGPT 1.0
 
 Use the OpenAI API within minecraft!
 This is a client-sided mod, which adds the `/gpt` command to minecraft
