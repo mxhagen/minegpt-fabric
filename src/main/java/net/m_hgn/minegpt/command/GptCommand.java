@@ -30,9 +30,17 @@ public class GptCommand {
     public static int run(CommandContext<FabricClientCommandSource> context) {
         String query = getString(context, "query");
         Text header = Text.literal("[MineGPT 1.0]\n")
-                .styled(style -> style.withColor(TextColor.parse("DARK_GREEN")).withBold(true));
+                .styled(style -> style.withColor(TextColor.fromRgb(0x44dd44)).withBold(true));
 
         context.getSource().getPlayer().sendMessage(header);
+
+        if (Gpt3Api.API_KEY == "NO_KEY") {
+            context.getSource().getPlayer()
+                    .sendMessage(Text.literal("No API Key was provided.\nProvide an OpenAI API Key first, using\n`/gpt api_key <key>`")
+                    .styled(style -> style.withColor(TextColor.fromRgb(0xff5555))));
+            return 0;
+        }
+
         context.getSource().getPlayer().sendMessage(Text.literal("Q: " + query + "\n\nGenerating response...")
                 .styled(style -> style.withColor(TextColor.fromRgb(0x55ff55))));
 
@@ -47,7 +55,7 @@ public class GptCommand {
 
                 context.getSource().getPlayer()
                         .sendMessage(Text.literal("\nMineGPT: Error: '" + e.getMessage() + "'"
-                                        + "\n\n This may happen if you haven't provided an API Key first using"
+                                        + "\n\n This may happen if you haven't provided a valid API Key first using"
                                         + "\n`/gpt api_key <key>`")
                                 .styled(style -> style.withColor(TextColor.fromRgb(0xff5555)).withItalic(true)));
             }
